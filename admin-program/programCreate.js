@@ -3,13 +3,14 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.1/firebase
 import { getFirestore, doc, deleteDoc, addDoc, getDocs, collection, query, where } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDoMRDV3ZcPRKj6mzbwYpAAmQFZEbdw0sY",
-    authDomain: "kh-semi-jogym.firebaseapp.com",
-    databaseURL: "https://kh-semi-jogym-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "kh-semi-jogym",
-    storageBucket: "kh-semi-jogym.appspot.com",
-    messagingSenderId: "370262867991",
-    appId: "1:370262867991:web:d04a2109a1d43a33675c52"
+    apiKey: "AIzaSyCr8bNq6iVioWl4LUwgDMyoaNieYdFyVLc",
+    authDomain: "boardtest-174d5.firebaseapp.com",
+    databaseURL: "https://boardtest-174d5-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "boardtest-174d5",
+    storageBucket: "boardtest-174d5.appspot.com",
+    messagingSenderId: "921590231442",
+    appId: "1:921590231442:web:b8f515057daf4ed545114b",
+    measurementId: "G-MWTSS92ZQR"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -30,12 +31,12 @@ function programOutoSelect() {
         console.log("선택한 트레이너 ==> " + trainerResult);
         
         // 선택한 트레이너와 대치되는 프로그램명 출력 쿼리문
-        const programQuery = query(collection(db, "trainer"), where("강사명", "==", trainerResult));
+        const programQuery = query(collection(db, "trainer"), where("이름", "==", trainerResult));
         const programQuerySnapshot = await getDocs(programQuery);
         
         programQuerySnapshot.forEach((doc) => {
             const programUid = doc.id;
-            const programResult = doc.data().담당프로그램; 
+            const programResult = doc.data().프로그램; 
             
             // 트레이너를 재선택했을 때, 해당 span태그에 중복으로 출력되므로 초기화
             $(".selectProgram").html("");
@@ -51,19 +52,6 @@ function programOutoSelect() {
     })
 }
 
-// function checkedDayArray(selectDay) {
-//     console.log("체크박스 다중 선택 배열 함수 호출 성공");
-//     $('input[type=checkbox][name=id]').change(function() {
-//         if($($(this)).is(":checked")) {
-//             alert(`${this.value}요일이 선택되었습니다.`);
-
-//             selectDay.push(this.value);
-//             console.log("선택한 요일 ==> " + selectDay);
-//         }
-//     })
-//     return selectDay;
-// }
-
 // 강사 선택 함수
 async function trainerSelect() {
     console.log("트레이너 선택 함수 호출 성공");
@@ -74,7 +62,7 @@ async function trainerSelect() {
     const trainerSnapshot = await getDocs(collection(db, "trainer"));
     trainerSnapshot.forEach((doc) => {
         // const trainerUid = doc.id;
-        const trainer = doc.data().강사명; 
+        const trainer = doc.data().이름; 
 
         // 트레이너 선택 selectBox에 넣어 줄 option을 template로 설정
         const trainerOptionTemplate = `

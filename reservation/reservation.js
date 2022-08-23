@@ -3,13 +3,14 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.1/firebase
 import { getFirestore, doc, deleteDoc, addDoc, getDocs, collection, query, where } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDoMRDV3ZcPRKj6mzbwYpAAmQFZEbdw0sY",
-    authDomain: "kh-semi-jogym.firebaseapp.com",
-    databaseURL: "https://kh-semi-jogym-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "kh-semi-jogym",
-    storageBucket: "kh-semi-jogym.appspot.com",
-    messagingSenderId: "370262867991",
-    appId: "1:370262867991:web:d04a2109a1d43a33675c52"
+    apiKey: "AIzaSyCr8bNq6iVioWl4LUwgDMyoaNieYdFyVLc",
+    authDomain: "boardtest-174d5.firebaseapp.com",
+    databaseURL: "https://boardtest-174d5-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "boardtest-174d5",
+    storageBucket: "boardtest-174d5.appspot.com",
+    messagingSenderId: "921590231442",
+    appId: "1:921590231442:web:b8f515057daf4ed545114b",
+    measurementId: "G-MWTSS92ZQR"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -64,6 +65,3 @@ async function programInfoSpread() {
     })
 }
 programInfoSpread();
-
-// deleteProgram 위치 2
-// 여기는 버튼 안먹어 
