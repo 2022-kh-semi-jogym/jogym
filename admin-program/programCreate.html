@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>강좌개설</title>
+    <!-- CSS -->
+    <!-- SCRIPT -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script defer type="module" src="./programCreate3.js"></script>
+    <!-- <script defer src="./programCreate-day.js"></script> -->
+    <body>
+        <div class="program-set" style="padding: 100px;">
+        <!-- 강좌 개설하기 폼 -->
+        <h1>강좌 개설하기</h1>
+        <div>
+            <form class="reservation-set">
+                <div class="trainer-set">
+                    <h2>트레이너 선택</h2>
+                    <select name="trainer" id="selectTrainerOption">
+                        <option value selected="selectTrainerOption" disabled>트레이너 선택</option>
+                        <!-- option 태그에 firestore에서 받아온 트레이너 이름이 들어가야한다. -->
+                    </select>
+                </div>
+                <div class="program-set">
+                    <h2>담당 프로그램</h2>
+                    <div id="programOuto">
+                        <!-- 트레이너 선택 시 트레이너의 담당 프로그램이 들어옵니다. -->
+                    </div>
+                </div>
+                <div class="time-set">
+                    <h2>시간</h2>
+                    <select name="time" id="selectTime">
+                        <option value selected="time" disabled>시간 선택</option>
+                        <option value="time01">09:00 ~ 10:30</option>
+                        <option value="time02">10:00 ~ 11:30</option>
+                        <option value="time03">11:00 ~ 12:30</option>
+                        <option value="time04">13:00 ~ 14:30</option>
+                        <option value="time05">14:00 ~ 14:30</option>
+                        <option value="time06">15:00 ~ 16:30</option>
+                        <option value="time07">16:00 ~ 17:30</option>
+                        <option value="time08">17:00 ~ 18:30</option>
+                        <option value="time09">18:00 ~ 19:30</option>
+                        <option value="time10">19:00 ~ 20:30</option>
+                        <option value="time11">20:00 ~ 21:30</option>
+                        <option value="time02">21:00 ~ 22:30</option>
+                    </select>
+                </div>
+                <!-- 기간 선택 -->
+                <div class="period-set">
+                    <h2>기간</h2>
+                    <div>
+                        <div>
+                            <span>시작일</span>
+                            <input type="date" class="form-control" id="startDay" value="" required>
+                        </div>
+                        <div>
+                            <span>종료일</span>
+                            <input type="date" class="form-control" id="endDay" value="" required>
+                        </div>
+                        
+                    </div>
+                </div>
+                <!-- 요일 선택 -->
+                <div class="day-set">
+                    <h2>요일</h2>
+                    <div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="월" id="selectDay" name="selectDay">
+                            <label class="form-check-label" for="flexCheckDefault">월</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="화" id="selectDay" name="selectDay">
+                            <label class="form-check-label" for="flexCheckDefault">화</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="수" id="selectDay" name="selectDay">
+                            <label class="form-check-label" for="flexCheckDefault">수</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="목" id="selectDay" name="selectDay">
+                            <label class="form-check-label" for="flexCheckDefault">목</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="금" id="selectDay" name="selectDay">
+                            <label class="form-check-label" for="flexCheckDefault">금</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="토" id="selectDay" name="selectDay">
+                            <label class="form-check-label" for="flexCheckDefault">토</label>
+                        </div>
+                    </div>
+                </div>
+                <div id="createProgram">
+                    <input type="button" value="강좌생성하기" id="program-submit"></input>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 생성된 프로그램 보여주세요. -->
+    <div class="container mt-3">
+        <h2>강좌 목록</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>강좌명</th>
+                    <th>강사명</th>
+                    <th>기간</th>
+                    <th>시간</th>
+                    <th>요일</th>
+                    <th>삭제</th>
+                </tr>
+            </thead>
+            <tbody id="programListAppend">
+                
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
