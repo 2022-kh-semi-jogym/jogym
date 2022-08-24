@@ -5,13 +5,14 @@ import { getFirestore, doc, collection, getDocs, query, where } from "https://ww
 
 // 연동할 firebase console configration
 const firebaseConfig = {
-    apiKey: "AIzaSyDoMRDV3ZcPRKj6mzbwYpAAmQFZEbdw0sY",
-    authDomain: "kh-semi-jogym.firebaseapp.com",
-    databaseURL: "https://kh-semi-jogym-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "kh-semi-jogym",
-    storageBucket: "kh-semi-jogym.appspot.com",
-    messagingSenderId: "370262867991",
-    appId: "1:370262867991:web:d04a2109a1d43a33675c52"
+    apiKey: "AIzaSyCr8bNq6iVioWl4LUwgDMyoaNieYdFyVLc",
+    authDomain: "boardtest-174d5.firebaseapp.com",
+    databaseURL: "https://boardtest-174d5-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "boardtest-174d5",
+    storageBucket: "boardtest-174d5.appspot.com",
+    messagingSenderId: "921590231442",
+    appId: "1:921590231442:web:b8f515057daf4ed545114b",
+    measurementId: "G-MWTSS92ZQR"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -68,5 +69,7 @@ onAuthStateChanged(auth, async (user) => {
         console.log("현재 로그인한 사용자 user ==> " + user.uid);   
     } else { // 로그인한 사용자가 없을 경우
         console.log('로그인한 사용자가 없습니다.');
+        alert("로그인이 필요한 페이지입니다. 확인을 누르면 로그인 페이지로 이동합니다.");
+        location.href = "../login/login.html";
     } 
 });
