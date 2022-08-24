@@ -5,14 +5,14 @@ import { getFirestore, doc, query, where, getDocs, collection, getDocFromCache }
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBJZW9NZF8C4Jt8rvdL7i3BDR_c_S3v76M",
-  authDomain: "semi-project-9261f.firebaseapp.com",
-  databaseURL: "https://semi-project-9261f-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "semi-project-9261f",
-  storageBucket: "semi-project-9261f.appspot.com",
-  messagingSenderId: "412207407765",
-  appId: "1:412207407765:web:f10778cd22a790c3d9719c",
-  measurementId: "G-9LW5P71WB6",
+  apiKey: "AIzaSyCr8bNq6iVioWl4LUwgDMyoaNieYdFyVLc",
+  authDomain: "boardtest-174d5.firebaseapp.com",
+  databaseURL: "https://boardtest-174d5-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "boardtest-174d5",
+  storageBucket: "boardtest-174d5.appspot.com",
+  messagingSenderId: "921590231442",
+  appId: "1:921590231442:web:b8f515057daf4ed545114b",
+  measurementId: "G-MWTSS92ZQR",
 };
 
 const app = initializeApp(firebaseConfig);
@@ -31,7 +31,7 @@ onAuthStateChanged(auth, async (user) => {
       querySnapshot.forEach((doc) => {
         console.log(`${doc.id} => ${doc.data()}`);
         console.log(doc.data());
-        const no = `${doc.data().회원번호}`;
+        // const no = `${doc.data().회원번호}`;
         const name = `${doc.data().이름}`;
         const birthday = `${doc.data().생년월일}`;
         const tell = `${doc.data().전화번호}`;
@@ -41,7 +41,7 @@ onAuthStateChanged(auth, async (user) => {
         const sportswear = `${doc.data().운동복}`;
         const locker = `${doc.data().락커}`;
 
-        $(".mypage-no").append(no);
+        // $(".mypage-no").append(no);
         $(".mypage-name").append(name);
         $(".mypage-birthday").append(birthday);
         $(".mypage-tell").append(tell);

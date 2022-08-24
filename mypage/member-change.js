@@ -14,14 +14,14 @@ import {
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBJZW9NZF8C4Jt8rvdL7i3BDR_c_S3v76M",
-  authDomain: "semi-project-9261f.firebaseapp.com",
-  databaseURL: "https://semi-project-9261f-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "semi-project-9261f",
-  storageBucket: "semi-project-9261f.appspot.com",
-  messagingSenderId: "412207407765",
-  appId: "1:412207407765:web:f10778cd22a790c3d9719c",
-  measurementId: "G-9LW5P71WB6",
+  apiKey: "AIzaSyCr8bNq6iVioWl4LUwgDMyoaNieYdFyVLc",
+  authDomain: "boardtest-174d5.firebaseapp.com",
+  databaseURL: "https://boardtest-174d5-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "boardtest-174d5",
+  storageBucket: "boardtest-174d5.appspot.com",
+  messagingSenderId: "921590231442",
+  appId: "1:921590231442:web:b8f515057daf4ed545114b",
+  measurementId: "G-MWTSS92ZQR",
 };
 
 const app = initializeApp(firebaseConfig);
