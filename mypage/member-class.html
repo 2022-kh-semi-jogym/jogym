@@ -14,7 +14,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://use.fontawesome.com/e5e48fac30.js"></script>
     <!-- SCRIPT js -->
-    <script defer type="module" src="./member-class.js"></script>
+    <!-- <script defer type="module" src="./member-class.js"></script> -->
   </head>
   <body>
     <!------------------------- header 시작 ------------------------->
@@ -81,9 +81,15 @@
     <!------------------------- section 시작 ------------------------->
     <section>
       <div class="contents">
+
+        <!-- 제목 시작 -->
         <div class="myhome">수강이력</div>
+        <!-- 제목 끝 -->
+
+        <!-- 수강 이력 내용 시작 -->
         <div class="mypage-main">
-          <div class="classdata">
+
+          <!-- 수강 이력 테이블 시작 -->
             <table class="table table-hover" style="table-layout: fixed">
               <tr>
                 <th scope="col">no</th>
@@ -97,9 +103,12 @@
                 <!-- firebase 저장소의 doc.data가 들어갈 자리입니다. -->
               </tbody>
             </table>
-          </div>
+            <!-- 수강 이력 테이블 끝 -->
+            
           <!-- 여기 -->
         </div>
+        <!-- 수강 이력 div 끝 -->
+
       </div>
     </section>
     <!-------------------------- section 끝 -------------------------->
