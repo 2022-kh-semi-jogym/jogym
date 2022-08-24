@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js";
 import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -56,13 +56,23 @@ document.getElementById("signUpButton").addEventListener("click", (event) => {
         // console.log("uid ===> " + uid) 
         console.log("회원가입 성공");
         alert("회원가입 성공");
+
+        // 회원가입 성공 시 setDoc 함수가 실행되어 추가 정보가 저장되는 시간 보다 로그아웃/페이지 이동 시간이 빠르면
+        // firestore에 정보 전달이 실패한다.
+        // setTimeout 함수를 사용하여 로그아웃 및 페이지 이동 처리하기
+        setTimeout(() => {
+            // 회원가입 성공 시 페이지 이동
+            signOut(auth).then(() => {
+                console.log("회원가입 후 로그아웃 성공");
+                location.href = "../index.html";
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                const errorCode = error.code;
+                console.log(errorCode + ", " + errorMessage);
+            })
+        }, 3000);
         
-        // 회원가입 성공 시 페이지 이동
-        // location.href = "../index.html";
-        // 여기서 페이지 이동을 하면 추가 정보 저장이 안된다... 왜 안되는건데ㅠ
-        
-        // 회원가입 하면 로그인이 자동으로 된다. 로그아웃을 해줘야함
-        // signOut();
     })
     .catch((error) => {
         const errorCode = error.code;
@@ -78,7 +88,17 @@ document.getElementById("signUpButton").addEventListener("click", (event) => {
             console.log("errorMessage ==> " + errorMessage);
         }
     })
-    
+
+    // 회원가입 성공 시 페이지 이동
+    // signOut(auth).then(() => {
+    //     console.log("회원가입 후 로그아웃 성공");
+    //     location.href = "../index.html";
+    // })
+    // .catch((error) => {
+    //     const errorMessage = error.message;
+    //     const errorCode = error.code;
+    //     console.log(errorCode + ", " + errorMessage);
+    // })
 })
 
 // 회원가입 취소 버튼을 누르면
