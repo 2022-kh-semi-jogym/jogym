@@ -69,7 +69,9 @@ onAuthStateChanged(auth, async (user) => {
         console.log("현재 로그인한 사용자 user ==> " + user.uid);   
     } else { // 로그인한 사용자가 없을 경우
         console.log('로그인한 사용자가 없습니다.');
-        alert("로그인이 필요한 페이지입니다. 확인을 누르면 로그인 페이지로 이동합니다.");
-        location.href = "../login/login.html";
+
+        // 예약하기/마이페이지에서만 필요한 코드입니다.
+        // alert("로그인이 필요한 페이지입니다. 확인을 누르면 로그인 페이지로 이동합니다.");
+        // location.href = "../login/login.html";
     } 
 });
