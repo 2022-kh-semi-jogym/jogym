@@ -1,5 +1,5 @@
 * {
-  /* border: 1px solid red; */
+  border: 1px solid red;
 }
 
 /***************************** header CSS 시작 ******************************/
@@ -41,27 +41,30 @@ header {
   margin-bottom: 13px;
 }
 
+/****************************** header CSS 끝 *******************************/
+
 .contents {
   padding: 50px 100px 50px 100px;
 }
-/****************************** header CSS 끝 *******************************/
 
 /***************************** session CSS 시작 ******************************/
 /* 시설보기 시작 */
-.intro-h-name {
+.intro-name {
   display: flex;
   justify-content: center;
   margin-top: 30px;
 }
 
-.intro-h-name > div {
-  background-color: rgb(45, 45, 87);
-}
-
+/* .intro-h-name {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+} */
+/* 
 .intro-h-name > div > h1 {
   color: white;
   font-size: 70px;
-}
+} */
 
 .intro-img-all {
   width: auto;
@@ -130,19 +133,19 @@ header {
 
 .map-box {
   display: flex;
-  justify-content: center;
-  margin: 30px;
+  /* justify-content: center; */
+  /* margin: 30px; */
 }
 
-.map-box-bus {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
+/* .map-box-bus { */
+  /* display: flex; */
+  /* justify-content: center; */
+  /* margin-bottom: 30px;
   margin-left: 30px;
   margin-right: 30px;
   width: 500px;
-  height: 500px;
-}
+  height: 500px; */
+/* } */
 
 /* 오시는길 끝 */
 /****************************** session CSS 끝 *******************************/
