@@ -23,9 +23,9 @@ const db = getFirestore(app);
 onAuthStateChanged(auth, async (user) => {
   if (user) {
     // 로그인한 사용자가 있을 경우
-    const userUid = user.uid;
+    const uid = user.uid;
     // 회원 로그인 되었을 때 로그인한 회원의 이름을 띄우기
-    const userNameQuerySnapshot = await getDocs(query(collection(db, "user"), where("uid", "==", userUid)));
+    const userNameQuerySnapshot = await getDocs(query(collection(db, "user"), where("uid", "==", uid)));
     userNameQuerySnapshot.forEach((doc) => {
       const displayName = doc.data().이름;
       // console.log(doc.id, " => ", doc.data());
@@ -63,10 +63,10 @@ onAuthStateChanged(auth, async (user) => {
 
     // 로그인한 상태에서 마이페이지 버튼을 눌렀을 때
     document.getElementById("mypageBtn").addEventListener("click", (event) => {
-      location.href = `./mypage/mypage.html?${userUid}`;
+      location.href = `./mypage/mypage.html?${uid}`;
     });
 
-    console.log("현재 로그인한 사용자 user ==> " + user.uid);
+    console.log("현재 로그인한 사용자 user ==> " + uid);
   } else {
     // 로그인한 사용자가 없을 경우
     console.log("로그인한 사용자가 없습니다.");
