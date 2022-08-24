@@ -3,13 +3,14 @@ import { getAuth, createUserWithEmailAndPassword, signOut } from "https://www.gs
 import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDoMRDV3ZcPRKj6mzbwYpAAmQFZEbdw0sY",
-    authDomain: "kh-semi-jogym.firebaseapp.com",
-    databaseURL: "https://kh-semi-jogym-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "kh-semi-jogym",
-    storageBucket: "kh-semi-jogym.appspot.com",
-    messagingSenderId: "370262867991",
-    appId: "1:370262867991:web:d04a2109a1d43a33675c52"
+    apiKey: "AIzaSyCr8bNq6iVioWl4LUwgDMyoaNieYdFyVLc",
+    authDomain: "boardtest-174d5.firebaseapp.com",
+    databaseURL: "https://boardtest-174d5-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "boardtest-174d5",
+    storageBucket: "boardtest-174d5.appspot.com",
+    messagingSenderId: "921590231442",
+    appId: "1:921590231442:web:b8f515057daf4ed545114b",
+    measurementId: "G-MWTSS92ZQR"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -29,6 +30,7 @@ document.getElementById("signUpButton").addEventListener("click", (event) => {
     const userPassword = $("#userPassword").val();
     
     // 회원가입 시 추가 정보 입력 사항
+    // let userNum = 1000;
     const userName = $("#userName").val();
     const userBirth = $("#userBirth").val();
     const userTel = $("#userTel").val();
@@ -44,6 +46,9 @@ document.getElementById("signUpButton").addEventListener("click", (event) => {
         // 회원가입이 진행될 때 추가 정보가 firestore에 저장되어야함
         // insert here
         setDoc(doc(db, "user", uid), { // user.uid를 사용하여 회원가입 시 생성된 회원의 uid에 추가 정보가 저장됨 
+            // 회원번호: ++userNum,
+
+            // 회원이 입력하는 정보
             이름: userName,
             전화번호: userTel,
             주소: userAddr1,
@@ -51,6 +56,12 @@ document.getElementById("signUpButton").addEventListener("click", (event) => {
             이메일: userEmail,
             생년월일: userBirth,
             uid: uid,
+            // 회원가입 시, 예약 관련 field명을 미리 저장하기
+            강사명: "",
+            프로그램: "",
+            수강기간: "",
+            시간: "",
+            요일: "",
         });
         
         // console.log("uid ===> " + uid) 
