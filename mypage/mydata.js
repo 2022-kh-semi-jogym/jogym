@@ -33,7 +33,7 @@ onAuthStateChanged(auth, async (user) => {
                     <tr>
                       <th scope="row">${++num}</th>
                       <td>${doc.data().강사명}</td>
-                      <td>${doc.data().프로그램명}</td>
+                      <td>${doc.data().프로그램}</td>
                       <td>${doc.data().수강기간}</td>
                       <td>${doc.data().시간}</td>
                       <td>${doc.data().요일}</td>
