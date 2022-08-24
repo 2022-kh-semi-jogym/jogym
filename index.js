@@ -63,7 +63,7 @@ onAuthStateChanged(auth, async (user) => {
 
     // 로그인한 상태에서 마이페이지 버튼을 눌렀을 때
     document.getElementById("mypageBtn").addEventListener("click", (event) => {
-      location.href = "./mypage/mypage.html";
+      location.href = `./mypage/mypage.html?${userUid}`;
     });
 
     console.log("현재 로그인한 사용자 user ==> " + user.uid);
