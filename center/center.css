@@ -129,23 +129,16 @@ header {
   display: flex;
   justify-content: center;
   text-align: center;
+  margin-bottom: 35px;
 }
 
 .map-box {
   display: flex;
-  /* justify-content: center; */
-  /* margin: 30px; */
 }
 
-/* .map-box-bus { */
-/* display: flex; */
-/* justify-content: center; */
-/* margin-bottom: 30px;
-  margin-left: 30px;
-  margin-right: 30px;
-  width: 500px;
-  height: 500px; */
-/* } */
+.map-box-bus {
+  margin-right: 150px;
+}
 
 /* 오시는길 끝 */
 /****************************** session CSS 끝 *******************************/
