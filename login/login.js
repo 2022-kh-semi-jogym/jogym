@@ -56,7 +56,7 @@ function signInButton(event) {
             } else if(errorCode == 'auth/invalid-email') {
                 alert('이메일과 비밀번호를 입력해주세요.');
             } else {
-                alert('오류가 발생했습니다. 다시 시도해주세요.서버 오류');
+                alert('오류가 발생했습니다. 다시 시도해주세요.');
                 console.log("errorMessage ==> " + errorMessage);
             }
         });

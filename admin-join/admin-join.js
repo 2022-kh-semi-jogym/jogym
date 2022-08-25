@@ -22,47 +22,31 @@ const db = getFirestore(app);
 ///////////////////////////////////////////////////////
 
 // 회원가입 버튼을 누르면
-document.getElementById("signUpButton").addEventListener("click", (event) => {
+document.getElementById("adminJoinBtn").addEventListener("click", (event) => {
     event.preventDefault(); // 회원가입 버튼을 누르더라도 페이지 새로고침이 되지 않음
     
-    // 회원가입 시 필요한 사용자 이메일/비밀번호 (회원가입 폼의 input태그 id값 가져오기)
-    const userEmail = $("#userEmail").val();
-    const userPassword = $("#userPassword").val();
+    // 회원가입 시 필요한 관리자 이메일/비밀번호 (회원가입 폼의 input태그 id값 가져오기)
+    const adminEmail = $("#adminJoinEmail").val();
+    const adminPwd = $("#adminJoinPwd").val();
     
     // 회원가입 시 추가 정보 입력 사항
-    // let userNum = 1000;
-    const userName = $("#userName").val();
-    const userBirth = $("#userBirth").val();
-    const userTel = $("#userTel").val();
-    const userAddr1 = $("#userAddr1").val();
-    const userAddr2 = $("#userAddr2").val();
+    const adminName = $("#adminJoinName").val();
+    
     
     // 회원가입 처리
-    createUserWithEmailAndPassword(auth, userEmail, userPassword)
+    createUserWithEmailAndPassword(auth, adminEmail, adminPwd)
     .then(userCredentials => {
         const user = userCredentials.user;
         const uid = user.uid;
         
         // 회원가입이 진행될 때 추가 정보가 firestore에 저장되어야함
         // insert here
-        setDoc(doc(db, "user", uid), { // user.uid를 사용하여 회원가입 시 생성된 회원의 uid에 추가 정보가 저장됨 
-            // 회원번호: ++userNum,
-
-            // 회원이 입력하는 정보
-            이름: userName,
-            전화번호: userTel,
-            주소: userAddr1,
-            상세주소: userAddr2,
-            이메일: userEmail,
-            생년월일: userBirth,
+        setDoc(doc(db, "admin", uid), { // user.uid를 사용하여 회원가입 시 생성된 회원의 uid에 추가 정보가 저장됨 
+            // 관리자가 입력하는 정보
+            이름: adminName,
+            이메일: adminEmail,
             uid: uid,
-            grade: 1, // 회원은 grade가 1 
-            // 회원가입 시, 예약 관련 field명을 미리 저장하기
-            // 강사명: "",
-            // 프로그램: "",
-            // 수강기간: "",
-            // 시간: "",
-            // 요일: "",
+            grade: 2, // 회원은 grade가 1, 관리자는 2
         });
         
         // console.log("uid ===> " + uid) 
@@ -104,7 +88,7 @@ document.getElementById("signUpButton").addEventListener("click", (event) => {
 
 // 회원가입 취소 버튼을 누르면
 $("#cancelButton").click(function(event) {
-    if(confirm('회원가입 진행중입니다. 취소하시겠습니까? \n확인 버튼을 누르시면 홈페이지 메인으로 이동합니다.')){
+    if(confirm('회원가입 진행중입니다. 취소하시겠습니까? \n확인 버튼을 누르시면 로그인 페이지로 이동합니다.')){
         location.href = "../index.html";
     } else {
         event.preventDefault();

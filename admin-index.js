@@ -23,35 +23,24 @@ const db = getFirestore(app);
 onAuthStateChanged(auth, async (user) => {
     if(user) { // 로그인한 사용자가 있을 경우
         const uid = user.uid;
-        // 회원 로그인 되었을 때 로그인한 회원의 이름을 띄우기
+        // 관리자가 로그인 되었을 때 로그인한 회원의 이름을 띄우기
         const userNameQuerySnapshot = await getDocs(query(collection(db, "user"), where("uid", "==", uid)));
         userNameQuerySnapshot.forEach((doc) => {
             const displayName = doc.data().이름;
             // console.log(doc.id, " => ", doc.data());
 
             const displayNameTemplate = `
-            <span id="userDisplayName" style="color: white; padding-right: 5px;">${displayName}님</span>
+            <span id="userDisplayName" style="color: white; padding-right: 5px;">관리자 ${displayName}님</span>
             `
             $("#userDisplayNameAppend").append(displayNameTemplate);
         })
-
-        // 로그인 버튼 및 회원가입 버튼의 text 값 변경하기
-        document.getElementById('loginBtn').textContent = "LOGOUT";
-        document.getElementById('joinBtn').textContent = "MY PAGE";
-        
-        // 로그인 버튼 및 회원가입 버튼에 대한 아이디 값 바꿔주기
-        const loginToLogout = document.getElementById('loginBtn');
-        const joinToMypage = document.getElementById('joinBtn');
-
-        loginToLogout.setAttribute('id', 'logoutBtn');
-        joinToMypage.setAttribute('id', 'mypageBtn');
 
         // 로그아웃 버튼 눌렀을 때
         document.getElementById('logoutBtn').addEventListener('click', (event) => {
             signOut(auth)
             .then(function() {
                 alert("로그아웃 되었습니다.");
-                location.href = 'index.html';
+                location.href = 'index.html'; // 관리자 로그인 페이지로 이동
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -59,22 +48,11 @@ onAuthStateChanged(auth, async (user) => {
                 alert('로그아웃 실패');
             })
         });
-        
-        // 로그인한 상태에서 마이페이지 버튼을 눌렀을 때
-        document.getElementById("mypageBtn").addEventListener("click", (event) => {
-            if (!window.location.href) {
-                location.href = `./mypage/mypage.html?${uid}`;
-            } else {
-                location.href = `../../mypage/mypage.html?${uid}`;
-            }
-        });
 
         console.log("현재 로그인한 사용자 user ==> " + uid);   
     } else { // 로그인한 사용자가 없을 경우
         console.log('로그인한 사용자가 없습니다.');
-
-        // 예약하기/마이페이지에서만 필요한 코드입니다.
-        // alert("로그인이 필요한 페이지입니다. 확인을 누르면 로그인 페이지로 이동합니다.");
-        // location.href = "../login/login.html";
-    } 
+        alert("로그인이 필요한 페이지입니다. 확인을 누르면 로그인 페이지로 이동합니다.");
+        location.href = "admin-login.html"; // 관리자 로그인 페이지로 이동
+    }
 });
