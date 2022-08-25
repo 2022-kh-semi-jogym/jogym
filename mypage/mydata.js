@@ -19,7 +19,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth();
 
-let num = 0;
+// let num = 0;
 
 onAuthStateChanged(auth, async (user) => {
   if (user) {
@@ -30,15 +30,14 @@ onAuthStateChanged(auth, async (user) => {
       const querySnapshot = await getDocs(query(collection(db, "user"), where("uid", "==", uid)));
       querySnapshot.forEach((doc) => {
         const template = `
-                    <tr>
-                      <th scope="row">${++num}</th>
-                      <td>${doc.data().강사명}</td>
-                      <td>${doc.data().프로그램}</td>
-                      <td>${doc.data().수강기간}</td>
-                      <td>${doc.data().시간}</td>
-                      <td>${doc.data().요일}</td>
-                    </tr>
-                  `;
+        <tr>
+        <td>${doc.data().강사명}</td>
+        <td>${doc.data().프로그램}</td>
+        <td>${doc.data().수강기간}</td>
+        <td>${doc.data().시간}</td>
+        <td>${JSON.stringify(doc.data().요일)}</td>
+        </tr>
+        `;
         $(".board-content").append(template);
       });
     } catch (error) {

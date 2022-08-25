@@ -46,6 +46,9 @@ onAuthStateChanged(auth, async (user) => {
         const name = obj._document.data.value.mapValue.fields.이름.stringValue;
         const birthday = obj._document.data.value.mapValue.fields.생년월일.stringValue;
         const email = obj._document.data.value.mapValue.fields.이메일.stringValue;
+        // console.log(obdoc.docs[0]);
+        console.log(jsonDoc);
+        console.log(obj);
         console.log(name);
         console.log(birthday);
         console.log(email);

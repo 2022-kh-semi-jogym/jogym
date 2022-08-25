@@ -1,6 +1,6 @@
 // ======================================== firebase 초기화 코드 시작 ======================================== //
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js";
-import { getFirestore, doc, deleteDoc, addDoc, getDocs, collection, query, where } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js";
+import { getFirestore, doc, deleteDoc, addDoc, getDocs, collection, query, updateDoc } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js";
 
 const firebaseConfig = {
@@ -27,7 +27,7 @@ async function programInfoSpread() {
   const programSnapshot = await getDocs(collection(db, "program"));
   programSnapshot.forEach((doc) => {
     // 프로그램 목록 조회
-    console.log("프로그램 목록  ==> " + doc.id, " ==> ", doc.data());
+    // console.log("프로그램 목록  ==> " + doc.id, " ==> ", doc.data());
 
     const programName = doc.data().프로그램명;
     const trainerName = doc.data().강사명;
@@ -35,6 +35,7 @@ async function programInfoSpread() {
     const time = doc.data().시간;
     const day = doc.data().요일;
 
+    // console.log(doc.id);
     const programListTemplate = `
             <tr>
                 <td id="program">${programName}</td>
@@ -43,41 +44,45 @@ async function programInfoSpread() {
                 <td id="programTime">${time}</td>
                 <td id="programDay">${day}</td>
                 <td><button type="button" class="programReservationBtn" value="${doc.id}">예약하기</button></td>
-            </tr>
+                </tr>
         `;
     $("#programListAppend").append(programListTemplate);
   });
-  // console.log(`${program}`);
-  // const obj = JSON.stringify(doc.id[0]);
-  // const test2 = JSON.parse(test);
-  // const test3 = test2.data;
-
-  console.log(programSnapshot.doc);
-  // console.log(obj);
-  // console.log(test2);
-  // console.log(test2._document);
-  // console.log(test2);
-  // console.log(programSnapshot);
-
-  // const jsonDoc = JSON.stringify(doc.id[0]);
-  // console.log(jsonDoc);
-  //   const obj = JSON.parse(jsonDoc);
-  //   console.log(obj);
-  // const name = obj._document.data.value.mapValue.fields.이름.stringValue;
-  // const birthday = obj._document.data.value.mapValue.fields.생년월일.stringValue;
-  // const email = obj._document.data.value.mapValue.fields.이메일.stringValue;
-
+  // const proSnap = JSON.stringify(programSnapshot);
+  // const obj = JSON.parse(proSnap);
+  // const day_week = obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields.요일.arrayValue.values;
+  // console.log(day_week);
   // 신청하기
   onAuthStateChanged(auth, async (user) => {
     $(".programReservationBtn").on("click", async (e) => {
+      e.preventDefault();
+      const proSnap = JSON.stringify(programSnapshot);
+      const obj = JSON.parse(proSnap);
+      const field = obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields;
+      const teacher = obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields.강사명.stringValue;
+      const day = obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields.기간.stringValue;
+      const time = obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields.시간.stringValue;
+      const day_week = obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields.요일.arrayValue.values;
+      const programName = obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields.프로그램명.stringValue;
+      console.log(field);
+      console.log(teacher);
+      console.log(day);
+      console.log(time);
+      console.log(day_week);
+      console.log(programName);
+
+      // console.log(JSON.stringify(day_week[0]));
       const uid = user.uid;
       console.log(uid);
       if (confirm("선택한 강좌를 예약하시겠습니까?")) {
         console.log("if문 진입 성공");
+
         await updateDoc(doc(db, "user", uid), {
-          전화번호: $("#userTel").val(),
-          주소: $("#userAddr1").val(),
-          상세주소: $("#userAddr2").val(),
+          강사명: teacher,
+          수강기간: day,
+          시간: time,
+          요일: day_week,
+          프로그램: programName,
         });
       } else {
         alert("예약이 취소되었습니다.");
