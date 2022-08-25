@@ -24,15 +24,15 @@ onAuthStateChanged(auth, async (user) => {
     if(user) { // 로그인한 사용자가 있을 경우
         const uid = user.uid;
         // 관리자가 로그인 되었을 때 로그인한 회원의 이름을 띄우기
-        const userNameQuerySnapshot = await getDocs(query(collection(db, "user"), where("uid", "==", uid)));
+        const userNameQuerySnapshot = await getDocs(query(collection(db, "admin"), where("uid", "==", uid)));
         userNameQuerySnapshot.forEach((doc) => {
             const displayName = doc.data().이름;
             // console.log(doc.id, " => ", doc.data());
 
             const displayNameTemplate = `
-            <span id="userDisplayName" style="color: white; padding-right: 5px;">관리자 ${displayName}님</span>
+            <span id="adminDisplayName" style="color: white; padding-right: 5px;">관리자 ${displayName}님</span>
             `
-            $("#userDisplayNameAppend").append(displayNameTemplate);
+            $("#adminDisplayNameAppend").append(displayNameTemplate);
         })
 
         // 로그아웃 버튼 눌렀을 때
@@ -41,6 +41,28 @@ onAuthStateChanged(auth, async (user) => {
             .then(function() {
                 alert("로그아웃 되었습니다.");
                 location.href = 'index.html'; // 관리자 로그인 페이지로 이동
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                console.log(errorCode);
+                alert('로그아웃 실패');
+            })
+        });
+
+        // 로그인 버튼 및 회원가입 버튼의 text 값 변경하기
+        document.getElementById('loginBtn').textContent = "LOGOUT";
+
+        // 로그인 버튼 및 회원가입 버튼에 대한 아이디 값 바꿔주기
+        const loginToLogout = document.getElementById('loginBtn');
+
+        loginToLogout.setAttribute('id', 'logoutBtn');
+
+        // 로그아웃 버튼 눌렀을 때
+        document.getElementById('logoutBtn').addEventListener('click', (event) => {
+            signOut(auth)
+            .then(function() {
+                alert("로그아웃 되었습니다.");
+                location.href = 'index.html';
             })
             .catch((error) => {
                 const errorCode = error.code;
