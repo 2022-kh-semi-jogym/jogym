@@ -48,10 +48,20 @@ async function programInfoSpread() {
         `;
     $("#programListAppend").append(programListTemplate);
   });
-  // const proSnap = JSON.stringify(programSnapshot);
-  // const obj = JSON.parse(proSnap);
-  // const day_week = obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields.요일.arrayValue.values;
-  // console.log(day_week);
+  const proSnap = JSON.stringify(programSnapshot);
+  const obj = JSON.parse(proSnap);
+  const day_week = obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields.요일.arrayValue.values;
+  console.log(`(string[] day_week)`);
+  // const day_week_1 = `obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields.요일.arrayValue.values[].stringValue`;
+  // const day_week_2 = obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields.요일.arrayValue.values[].stringValue;
+  // const day_week_3 = obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields.요일.arrayValue.values[].stringValue;
+  // const day_week_4 = obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields.요일.arrayValue.values[].stringValue;
+  // console.log(day_week_1);
+  // console.log(day_week_2);
+  // console.log(day_week_3);
+  // console.log(day_week_4);
+
+  console.log(day_week);
   // 신청하기
   onAuthStateChanged(auth, async (user) => {
     $(".programReservationBtn").on("click", async (e) => {
@@ -63,6 +73,7 @@ async function programInfoSpread() {
       const day = obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields.기간.stringValue;
       const time = obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields.시간.stringValue;
       const day_week = obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields.요일.arrayValue.values;
+
       const programName = obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields.프로그램명.stringValue;
       console.log(field);
       console.log(teacher);
@@ -70,8 +81,6 @@ async function programInfoSpread() {
       console.log(time);
       console.log(day_week);
       console.log(programName);
-
-      // console.log(JSON.stringify(day_week[0]));
       const uid = user.uid;
       console.log(uid);
       if (confirm("선택한 강좌를 예약하시겠습니까?")) {
