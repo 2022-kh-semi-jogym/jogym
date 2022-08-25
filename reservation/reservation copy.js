@@ -1,6 +1,7 @@
 // ======================================== firebase 초기화 코드 시작 ======================================== //
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js";
 import { getFirestore, doc, deleteDoc, addDoc, getDocs, collection, query, where } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCr8bNq6iVioWl4LUwgDMyoaNieYdFyVLc",
@@ -14,7 +15,9 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const auth = getAuth();
 const db = getFirestore(app);
+
 // ========================================= firebase 초기화 코드 끝 ========================================= //
 
 // 생성된 강좌에 대한 목록 조회하기
@@ -44,32 +47,44 @@ async function programInfoSpread() {
         `;
     $("#programListAppend").append(programListTemplate);
   });
-  //   const jsonDoc = JSON.stringify(doc.docs[0]);
-  const jsonDoc = JSON.stringify(doc.id[0]);
-  console.log(jsonDoc);
+  // console.log(`${program}`);
+  // const obj = JSON.stringify(doc.id[0]);
+  // const test2 = JSON.parse(test);
+  // const test3 = test2.data;
+
+  console.log(programSnapshot.doc);
+  // console.log(obj);
+  // console.log(test2);
+  // console.log(test2._document);
+  // console.log(test2);
+  // console.log(programSnapshot);
+
+  // const jsonDoc = JSON.stringify(doc.id[0]);
+  // console.log(jsonDoc);
   //   const obj = JSON.parse(jsonDoc);
   //   console.log(obj);
-  const name = obj._document.data.value.mapValue.fields.이름.stringValue;
-  const birthday = obj._document.data.value.mapValue.fields.생년월일.stringValue;
-  const email = obj._document.data.value.mapValue.fields.이메일.stringValue;
+  // const name = obj._document.data.value.mapValue.fields.이름.stringValue;
+  // const birthday = obj._document.data.value.mapValue.fields.생년월일.stringValue;
+  // const email = obj._document.data.value.mapValue.fields.이메일.stringValue;
 
   // 신청하기
-  $(".programReservationBtn").on("click", async (e) => {
-    // console.log(`${programName}`);
-    console.log(`programReservationBtn.${(doc, id)}`);
-    console.log("예약하기 클릭 성공");
-    console.log("예약하기 클릭 성공");
-    if (confirm("선택한 강좌를 예약하시겠습니까?")) {
-      console.log("if문 진입 성공");
-      await updateDoc(doc(db, "user", uid), {
-        전화번호: $("#userTel").val(),
-        주소: $("#userAddr1").val(),
-        상세주소: $("#userAddr2").val(),
-      });
-    } else {
-      alert("예약이 취소되었습니다.");
-    }
+  onAuthStateChanged(auth, async (user) => {
+    $(".programReservationBtn").on("click", async (e) => {
+      const uid = user.uid;
+      console.log(uid);
+      if (confirm("선택한 강좌를 예약하시겠습니까?")) {
+        console.log("if문 진입 성공");
+        await updateDoc(doc(db, "user", uid), {
+          전화번호: $("#userTel").val(),
+          주소: $("#userAddr1").val(),
+          상세주소: $("#userAddr2").val(),
+        });
+      } else {
+        alert("예약이 취소되었습니다.");
+      }
+    });
   });
+  // });
 }
 programInfoSpread();
 
