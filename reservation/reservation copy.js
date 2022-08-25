@@ -48,20 +48,7 @@ async function programInfoSpread() {
         `;
     $("#programListAppend").append(programListTemplate);
   });
-  const proSnap = JSON.stringify(programSnapshot);
-  const obj = JSON.parse(proSnap);
-  const day_week = obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields.요일.arrayValue.values;
-  console.log(`(string[] day_week)`);
-  // const day_week_1 = `obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields.요일.arrayValue.values[].stringValue`;
-  // const day_week_2 = obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields.요일.arrayValue.values[].stringValue;
-  // const day_week_3 = obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields.요일.arrayValue.values[].stringValue;
-  // const day_week_4 = obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields.요일.arrayValue.values[].stringValue;
-  // console.log(day_week_1);
-  // console.log(day_week_2);
-  // console.log(day_week_3);
-  // console.log(day_week_4);
 
-  console.log(day_week);
   // 신청하기
   onAuthStateChanged(auth, async (user) => {
     $(".programReservationBtn").on("click", async (e) => {
@@ -73,7 +60,6 @@ async function programInfoSpread() {
       const day = obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields.기간.stringValue;
       const time = obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields.시간.stringValue;
       const day_week = obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields.요일.arrayValue.values;
-
       const programName = obj._snapshot.docs.sortedSet.root.key.data.value.mapValue.fields.프로그램명.stringValue;
       console.log(field);
       console.log(teacher);
@@ -98,31 +84,5 @@ async function programInfoSpread() {
       }
     });
   });
-  // });
 }
 programInfoSpread();
-
-// const chBtn = document.querySelector("#changeButton");
-// chBtn.addEventListener("click", async (e) => {
-//   e.preventDefault();
-//   console.log("클릭이벤트 성공");
-//   const ok = confirm("수정하시겠습니까?");
-//   if (ok) {
-//     console.log("if문까지 성공했습니다.");
-//     // const docdata = {};
-//     await updateDoc(doc(db, "user", uid), {
-//       전화번호: $("#userTel").val(),
-//       주소: $("#userAddr1").val(),
-//       상세주소: $("#userAddr2").val(),
-//     });
-//     alert("회원님의 정보가 수정되었습니다.");
-//     location.href = "./mypage.html";
-//   }
-// });
-
-// // 예약 진행 코드
-// // const reservationQuerySnapshot = await getDocs(query(collection(db, "user"), where("uid", "==", uid)));
-
-// await addDoc(query(collection(db, "user")){
-//     강좌uid: $(".programReservationBtn").val()
-// })

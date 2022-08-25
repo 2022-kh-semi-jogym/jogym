@@ -53,6 +53,12 @@ document.getElementById("signUpButton").addEventListener("click", (event) => {
         이메일: userEmail,
         생년월일: userBirth,
         uid: uid,
+
+        강사명: "",
+        수강기간: "",
+        시간: "",
+        요일: "",
+        프로그램: "",
       });
 
       // console.log("uid ===> " + uid)

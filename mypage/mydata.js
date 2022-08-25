@@ -29,10 +29,6 @@ onAuthStateChanged(auth, async (user) => {
     try {
       const querySnapshot = await getDocs(query(collection(db, "user"), where("uid", "==", uid)));
       querySnapshot.forEach((doc) => {
-        let day = `${JSON.stringify(doc.data().요일)}`;
-        console.log("이거" + day);
-        day = day.replace(/"stringValue"/, "");
-        console.log("마지막" + day);
         const template = `
         <tr>
         <td>${doc.data().강사명}</td>
