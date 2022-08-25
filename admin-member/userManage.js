@@ -25,9 +25,9 @@ const user = auth.currentUser;
         // 회원 목록 불러오기
         const userSnapshot = await getDocs(collection(db, "user"));
         userSnapshot.forEach((doc) => {
-            const userUid = doc.id;
+            const uid = doc.id;
             // 회원 목록 조회
-            console.log("회원 목록 ===> " + userUid, " => ", doc.data());
+            console.log("회원 목록 ===> " + uid, " => ", doc.data());
             
             const name = doc.data().이름;
             const birth = doc.data().생년월일;

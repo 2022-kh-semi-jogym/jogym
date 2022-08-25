@@ -33,9 +33,10 @@ function signInButton(event) {
     signInWithEmailAndPassword(auth, userEmail, userPassword)
         .then((userCredential) => {
             const user = userCredential.user;
+            const uid = user.uid;
 
             // 로그인 한 유저정보 확인하기
-            console.log("유저 정보 확인 ==> " + user.uid);
+            console.log("유저 정보 확인 ==> " + uid);
 
             console.log('로그인 성공');
             alert('로그인 성공');

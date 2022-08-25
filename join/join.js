@@ -57,11 +57,11 @@ document.getElementById("signUpButton").addEventListener("click", (event) => {
             생년월일: userBirth,
             uid: uid,
             // 회원가입 시, 예약 관련 field명을 미리 저장하기
-            강사명: "",
-            프로그램: "",
-            수강기간: "",
-            시간: "",
-            요일: "",
+            // 강사명: "",
+            // 프로그램: "",
+            // 수강기간: "",
+            // 시간: "",
+            // 요일: "",
         });
         
         // console.log("uid ===> " + uid) 
@@ -99,17 +99,6 @@ document.getElementById("signUpButton").addEventListener("click", (event) => {
             console.log("errorMessage ==> " + errorMessage);
         }
     })
-
-    // 회원가입 성공 시 페이지 이동
-    // signOut(auth).then(() => {
-    //     console.log("회원가입 후 로그아웃 성공");
-    //     location.href = "../index.html";
-    // })
-    // .catch((error) => {
-    //     const errorMessage = error.message;
-    //     const errorCode = error.code;
-    //     console.log(errorCode + ", " + errorMessage);
-    // })
 })
 
 // 회원가입 취소 버튼을 누르면
