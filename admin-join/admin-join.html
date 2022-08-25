@@ -12,41 +12,38 @@
     <script type="module" src="./admin-join.js"></script>
 </head>
 <body>
-    <!-- 로그인 폼 시작 -->
+    <!-- 회원가입 폼 시작 -->
     <div class="wrap">
         <div class="login">
             <h2>JOGYM</h2>
             <br>
             <h3>관리자 회원가입</h3>
-            <!-- 이메일 로그인 - 이메일 input -->
+            <!-- 이메일 input -->
             <div class="login_id">
                 <h4>E-mail</h4>
                 <input type="email" name="" id="adminJoinEmail" placeholder="Admin Email">
             </div>
-            <!-- 이메일 로그인 - 패스워드 input -->
+            <!-- 패스워드 input -->
             <div class="login_pw">
                 <h4>Password</h4>
                 <input type="password" name="" id="adminJoinPwd" placeholder="Admin Password">
             </div>
-            <!-- 이메일/패스워드 기억하기 -->
-            <div class="login_etc">
-                <div class="checkbox">
-                    <input type="checkbox" name="" id="rememberMe"> Remember Me?
-                </div>
+            <!-- 이름 input -->
+            <div class="login_pw">
+                <h4>Name</h4>
+                <input type="name" name="" id="adminJoinName" placeholder="Admin Name">
             </div>
-            <!-- 로그인 버튼 -->
+            <!-- 회원가입 버튼 -->
             <div class="submit">
                 <input type="submit" value="Join" id="adminJoinBtn">
             </div>
+            <!-- 회원가입 취소 버튼 -->
             <div class="submit">
-                <!-- <button class="btn btn-lg btn-primary btn-block" id="adminJoinBtn" type="submit">Sign Up</button>
-                <button class="btn btn-lg btn-primary btn-block" id="cancelButton" type="submit">Cancel</button> -->
-                    
                 <input type="button" value="Cancel" id="cancelButton" onclick="location.href='../admin-login/admin-login.html'"></input>
             </div>
         </div>
     </div>
-    <!-- 로그인 폼 끝 -->
+    <!-- 회원가입 폼 끝 -->
 
 
 

@@ -46,7 +46,7 @@ document.getElementById("adminJoinBtn").addEventListener("click", (event) => {
             이름: adminName,
             이메일: adminEmail,
             uid: uid,
-            grade: 2, // 회원은 grade가 1, 관리자는 2
+            grade: 2, // 회원은 grade가 1, 관리자는 2 (관리자 권한 부여하기)
         });
         
         // console.log("uid ===> " + uid) 
@@ -60,7 +60,7 @@ document.getElementById("adminJoinBtn").addEventListener("click", (event) => {
             // 회원가입 성공 시 페이지 이동
             signOut(auth).then(() => {
                 console.log("회원가입 후 로그아웃 성공");
-                location.href = "../index.html";
+                location.href = "../admin-login/admin-login.html";
             })
             .catch((error) => {
                 const errorMessage = error.message;
