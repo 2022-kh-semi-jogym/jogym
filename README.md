@@ -15,6 +15,8 @@
 💻 개발 환경
   * OS : MacOS, Window10
   * Tool : VScode
+
+💻 기술 스택
   * Front-End : HTML5, CSS3, JavaScipt
   * Back-End : Node.js
   * DataBase : Firebase
