@@ -34,7 +34,7 @@
   * DataBase : Firebase
   * Library : Bootstrap 5, jQuery
 
-## 🕹 기능 구현
+### 🕹 기능 구현
   * <b>공이현</b><br />
     (Front) 홈페이지 메인, 회원가입 페이지, 로그인 페이지, 예약하기 페이지 / 회원 관리 페이지, 강좌 관리 페이지<br />
     (Back) 회원가입, 로그인, 예약하기 / 회원 전체 조회, 강좌 CRUD<br />
