@@ -12,6 +12,18 @@
   1. 회원제로 운영되는 헬스장 프로그램 예약을 위한 트레이너 및 프로그램 조회 시스템
   2. 회원제로 운영되는 헬스장 관리를 위한 트레이너 및 예약 프로그램 생성 시스템
 
+### 📌 학습 목표
+    * 지식 및 기술
+    1. 업무에 대한 요구사항을 정의하여 요구사항을 바탕으로 프로젝트를 설계할 수 있다.
+    2. HTML과 CSS를 통해 정적 웹 페이지를 생성할 수 있다.
+    3. JavaScript의 코드 실행 과정에 대해 이해하고 코드를 작성하여 동적 웹 페이지를 구현할 수 있다.
+    4. Firebase(NoSQL)를 활용하여 CRUD 데이터 처리를 할 수 있다.
+    * 태도
+    1. API를 활용하는 학습 태도를 기른다.
+    2. 역할 분배를 통해 업무의 효율을 높인다. 
+    3.
+  
+
 ### 💻 개발 환경
   * OS : MacOS, Window10
   * Tool : VScode
@@ -20,7 +32,7 @@
   * Front-End : HTML5, CSS3, JavaScipt
   * Back-End : Node.js
   * DataBase : Firebase
-  * Library : Bootstrap 5
+  * Library : Bootstrap 5, jQuery
 
 ## 🕹 기능 구현
   * <b>공이현</b><br />
