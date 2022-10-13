@@ -1,6 +1,7 @@
 # 2022 KH 정보교육원 세미 프로젝트
 ### 🤸🏻‍♀️ JOGYM (헬스장 정보 조회 및 예약 관리 시스템)
-
+<br />
+<br />
 ✔ 팀원 : 공이현(PM), 정채은(PA), 김동현(PA)
 <br />
 ✔ 기간 : 2022.07.15 ~ 2022.08.26
@@ -11,4 +12,7 @@
 
 💻 개발 환경
   * OS : MacOS, Window10
-  * 
+  * Tool : VScode
+  * Front-End : HTML5, CSS3, JavaScipt
+  * Back-End : Node.js
+  * DataBase : Firebase
